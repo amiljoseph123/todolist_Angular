@@ -1,9 +1,9 @@
 <h1> My To-Do List</h1>
 <div class="container">
-<form>
+<form (ngSubmit)="onSubmit(taskForm)" #taskform="ngForm">
     <div class="form-group">
       <label for="task">enter task</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your tasks here">
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your tasks here" name="task"ngModel required>
       <small id="emailHelp" class="form-text text-muted">required field</small>
     </div>
    
@@ -22,14 +22,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">wake up early</th>
+      <tr *ngFor="let t of taskArray"> 
+       <tr *ngFor="let t of taskArray">
+        <td>{{t.taskName}}</td> 
         <td> <input id="cbox" type="checkbox" aria-label="Checkbox for following text input"></td>
         <td><button class="btn btn-danger btn-sm">Delete</button></td>
       </tr>
      
     </tbody>
   </table>
-  
+ </div>
 
-</div>

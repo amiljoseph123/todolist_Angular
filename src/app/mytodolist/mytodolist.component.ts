@@ -10,16 +10,20 @@
 
 // }
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-mytodolist',  
-  imports:[
-    FormsModule
-  ],
+  
   standalone: true,  // ✅ This tells Angular it's a standalone component
-  templateUrl: './mytodolist.component.html',
+  imports:[FormsModule],
+  templateUrl:'./mytodolist.component.html',
   styleUrls: ['./mytodolist.component.css']
 })
-export class MytodolistComponent { }
+export class MytodolistComponent { 
+
+  taskArray=[{taskName: 'brush',iscompleted: false}]
+
+  onSubmit(form:NgForm){}
+}
 
