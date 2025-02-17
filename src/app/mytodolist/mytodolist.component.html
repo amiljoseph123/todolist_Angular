@@ -18,11 +18,14 @@
         <th>Task</th>
         <th>Completed</th>
         <th>Delete</th>
+        <th>Task</th>
+        <th>Completed</th>
+        <th>Delete</th>
         
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let t of taskArray"> 
+      <!-- <tr *ngFor="let t of taskArray">  -->
        <tr *ngFor="let t of taskArray">
         <td>{{t.taskName}}</td> 
         <td> <input id="cbox" type="checkbox" aria-label="Checkbox for following text input"></td>
