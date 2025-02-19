@@ -1,36 +1,42 @@
-<h1> My To-Do List</h1>
+<h1>My To-Do List</h1>
 <div class="container">
-<form (ngSubmit)="onSubmit(taskForm)" #taskform="ngForm">
+  <form (ngSubmit)="onSubmit(taskform)" #taskform="ngForm">
     <div class="form-group">
-      <label for="task">enter task</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your tasks here" name="task"ngModel required>
-      <small id="emailHelp" class="form-text text-muted">required field</small>
+      <label for="task">Enter Task</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="task" 
+        placeholder="Enter your task here" 
+        name="task" 
+        ngModel 
+        required
+      />
     </div>
-   
-    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!taskform.valid">Add Task</button>
   </form>
 
   <hr>
+
   <table class="table table-bordered">
-    <thead class="thead-dark">
+    <thead class="table-dark">
       <tr>
-       
         <th>Task</th>
         <th>Completed</th>
         <th>Delete</th>
-        
-        
       </tr>
     </thead>
     <tbody>
-      <!-- <tr *ngFor="let t of taskArray">  -->
-       <tr *ngFor="let t of taskArray">
-        <td>{{t.taskName}}</td> 
-        <td> <input id="cbox" type="checkbox" aria-label="Checkbox for following text input"></td>
-        <td><button class="btn btn-danger btn-sm">Delete</button></td>
+      <tr *ngFor="let t of taskArray; let i = index">
+        <td [ngClass]="{ 'text-decoration-line-through': t.iscompleted }">{{ t.taskName }}</td>
+        <td>
+          <input type="checkbox" [checked]="t.iscompleted" (change)="toggleComplete(i)" />
+        </td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteTask(i)">Delete</button>
+        </td>
       </tr>
-     
     </tbody>
   </table>
- </div>
-
+</div>
